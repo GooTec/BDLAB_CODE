@@ -1,6 +1,6 @@
-BioData Lab
-
-by 김성민, 2018.6.22
+# SVM README
+* 작성자 : 김성민, 2018.6.22
+* 문의 : 
 
 ## Library
   e1071
