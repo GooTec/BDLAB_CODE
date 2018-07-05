@@ -104,7 +104,6 @@ length의 합 =n+1 #400=399+1
 heatmap3(t(input),col = mc, breaks = col_breaks) 
 dev.off()
 ```
-![figure6](./figure/figure6.png)
 
 
 ## Scale
@@ -116,7 +115,8 @@ png("heatmap_scale.png")
 heatmap3(t(input),col = mc, breaks = col_breaks,scale = 'none') 
 dev.off()
 ```
-![figure7](./figure/figure7.png)
+![figure6](./figure/figure6.png)
+
 
 
 ## heatmap 위에 원하는 index bar 추가!
@@ -149,7 +149,8 @@ heatmap3(t(input),col = mc, #scale = 'none',
 breaks = col_breaks, Colv = NA, margins = c(3,16), ColSideColors = myCols)
 dev.off()
 ```
-![figure8](./figure/figure8.png)
+![figure7](./figure/figure7.png)
+
 
 
 ## Legend 추가하기
@@ -160,6 +161,6 @@ heatmap3(t(input),col = mc, #scale = 'none', breaks = col_breaks, Colv = NA,
 margins = c(3,16), ColSideColors = myCols)
 legend(title = "Result","topright",legend = c("Cancer","Normal"),fill = c("red","green") ,border = FALSE,bty = "n", y.intersp =1.0,cex = 1.0)
 dev.off()
-```ㅎ
+```
 
-![figure8](./figure/figure9.png)
+![figure8](./figure/figure8.png)
