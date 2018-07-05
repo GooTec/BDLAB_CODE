@@ -50,6 +50,7 @@ https://datascienceschool.net/view-notebook/83d5e4fff7d64cb2aecfd7e42e1ece5e/
 	- 앞서 기록한 reference, method, accuracy 데이터를 data frame으로 만든다. 대상 디렉토리에 저장한다.
 
 결과 파일
+![result_file](./result_file.png)
 
 ## Penalized_Regression_Example.R
 실제 연구에 사용 중인 코드와 거의 비슷. 알아두면 유용하긴 하겠지만 굳이… 쓰고 나서야 왜 적었을까 후회하고 있음. 목표지향적인 삶을 살고 싶었는데. 기본적으로 cancer diagnosis 연구의 배경을 조금 설명. 앞 부분을 다 읽은 것을 전제로 새로 나온 부분만 설명.
@@ -87,7 +88,9 @@ ex) type이 VAR, feature가 10이면 Variance 상위 10개 gene을 뽑았다는 
 	- 실제 regression은 거의 비슷. ref file 이름을 통째로 기록하는 것이 아니라 type, feature로 나눠서 기록하기 때문에 분류가 좀 더 간편(ex: CV만 찾기, 30개짜리들 비교하기…)
 
 결과 예시
+![result_example](./result_example.png)
 
-사족1) 모르는 부분이 있다면 작성자도 모를 확률이 다분하므로 교수님과 구글님께 여쭤보고, 틀린 부분이 있다면 꼭 알려주세요 제발. 연구 다시 해야 되니까.
-사족2) 원본 코드를 보내주신 이성영 박사님께 심심한 감사를…
-사족3) 모두 파이팅
+
+- 사족1) 모르는 부분이 있다면 작성자도 모를 확률이 다분하므로 교수님과 구글님께 여쭤보고, 틀린 부분이 있다면 꼭 알려주세요 제발. 연구 다시 해야 되니까.
+- 사족2) 원본 코드를 보내주신 이성영 박사님께 심심한 감사를…
+- 사족3) 모두 파이팅
