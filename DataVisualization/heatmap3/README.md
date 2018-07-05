@@ -80,5 +80,73 @@ heatmap3(t(input),Colv = NA) dev.off()
 ```
 ![figure4](./figure/figure4.png)
 
+##Color and Breaks
+```
+#png("heatmap_color.png")
+heatmap3(t(input),col = greenred(100)) 
+col = 색 설정 dev.off()
+#breaks 는 색 range를 설정해 주는 것이다.
+```
+
+![figure5](./figure/figure5.png)
 
 
+여러가지 색을 사용하기 위해 새로운 color를 저장한다.
+mc <- colorRampPalette(c("red", "yellow" ,"skyblue" ,"blue"))(n = 399)
+col_breaks 에 저장을 한다.
+col_breaks = c(seq(-10,-3,length=100), seq(-2.99,0,length=100),
+seq(0.01,3,length=100), seq(5,10,length=100))
+여기서 중요한 점은 color의 갯수(n)이 breaks length 의 갯수보다 1 작아야 한다.
+length의 합 =n+1 #400=399+1
+
+```
+#png("heatmap_color_break.png") 
+heatmap3(t(input),col = mc, breaks = col_breaks) 
+dev.off()
+```
+![figure6](./figure/figure6.png)
+
+
+## Scale
+
+scale = 'none'으로 설정 하면 orginal data 값으로 구분함.
+그전에는 heatmap에서 scale을 조절함(default = 'row')
+```
+png("heatmap_scale.png")
+heatmap3(t(input),col = mc, breaks = col_breaks,scale = 'none') 
+dev.off()
+```
+![figure7](./figure/figure7.png)
+
+
+## heatmap 위에 원하는 index bar 추가!
+
+```
+
+# heatmap에 cancer code와 result 값을 추가!
+#이전에 orginat data를 다시 가공해야함
+model <-od
+model <- model[order(-model$result,model$cancer_code),] 
+gc <- factor(model$cancer_code) 
+cancer_code<-model$cancer_code
+num_cancercode <- length(levels(model$cancer_code)) 
+CancerCode_color <- rainbow(num_cancercode)[as.integer(gc)]
+fresult <-function(result){
+if(result == 1) {"#CC0000"} 
+#red 
+else{"#00FF00"} 
+#green
+}
+result_color<-unlist(lapply(model$result,fresult)) 
+myCols <- cbind(result_color,CancerCode_color) 
+colnames(myCols)[1] <- "Result" 
+colnames(myCols)[2] <- "CancerCode" 
+model<-subset(model,select = - c(patient,cancer_code,result,index)) 
+input<-data.matrix(model)
+png("heatmap_extra_colbar.png")
+#Scale, colv 값을 조절하면서 보면 차이를 확일 할 수 있다.
+heatmap3(t(input),col = mc, #scale = 'none',
+breaks = col_breaks, Colv = NA, margins = c(3,16), ColSideColors = myCols)
+dev.off()
+```
+![figure8](./figure/figure8.png)
