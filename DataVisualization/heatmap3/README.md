@@ -44,3 +44,123 @@ dev.off() 이것을 해야 plot이 close되고 파일을 최종 저장한다. pl
 하지만 가끔 오류가 뜨게 되면, 
 이 방법을 통해 확인 가능
 일단 주석처리 하고 질문이 있으면.. 저에게..
+![figure1](./figure/figure1.png)
+
+
+```
+#png("basic_heatmap3.png")
+#main은 plot 이름을, cexRow = ROW 글자 크기, cexCol = COL 글자 크기. 변경해보면서 확인!
+heatmap3(input,main = "test",cexRow = 0.5, cexCol = 0.5) dev.off()
+```
+## Heatmap ColV, RowV
+
+![figure2](./figure/figure2.png)
+
+지금 그림을 보면 가로 = 사람, 세로 = gene이름이 있다.
+그리고 자동으로 clustering (위에 나뭇가지 처럼 되어 있는 그림)이 된다. # 이것을 조절 하는 것이 Colv, Rowv parameter 이다.
+그리고 우리 기존 data.frame이 row = patient, col = variables이다.
+t(input)을 통해 row, col의 위치를 바꾸어 준다.
+그리고 ColV = NA로 설정하면 col의 나뭇가지가 없어진다.
+
+
+```
+#colv = T와 비교해보면 확실하게 느낌이 올것이다.
+#png("heatmap_colv_F.png") 
+heatmap3(t(input),Colv = F) 
+dev.off()
+```
+![figure3](./figure/figure3.png)
+
+
+
+```
+#png("heatmap_colv_NA.png")
+#colv = NA는 나뭇가지 지우기
+heatmap3(t(input),Colv = NA) dev.off()
+```
+![figure4](./figure/figure4.png)
+
+##Color and Breaks
+```
+#png("heatmap_color.png")
+heatmap3(t(input),col = greenred(100)) 
+col = 색 설정 dev.off()
+#breaks 는 색 range를 설정해 주는 것이다.
+```
+
+![figure5](./figure/figure5.png)
+
+
+여러가지 색을 사용하기 위해 새로운 color를 저장한다.
+mc <- colorRampPalette(c("red", "yellow" ,"skyblue" ,"blue"))(n = 399)
+col_breaks 에 저장을 한다.
+col_breaks = c(seq(-10,-3,length=100), seq(-2.99,0,length=100),
+seq(0.01,3,length=100), seq(5,10,length=100))
+여기서 중요한 점은 color의 갯수(n)이 breaks length 의 갯수보다 1 작아야 한다.
+length의 합 =n+1 #400=399+1
+
+```
+#png("heatmap_color_break.png") 
+heatmap3(t(input),col = mc, breaks = col_breaks) 
+dev.off()
+```
+
+
+## Scale
+
+scale = 'none'으로 설정 하면 orginal data 값으로 구분함.
+그전에는 heatmap에서 scale을 조절함(default = 'row')
+```
+png("heatmap_scale.png")
+heatmap3(t(input),col = mc, breaks = col_breaks,scale = 'none') 
+dev.off()
+```
+![figure6](./figure/figure6.png)
+
+
+
+## heatmap 위에 원하는 index bar 추가!
+
+```
+
+# heatmap에 cancer code와 result 값을 추가!
+#이전에 orginat data를 다시 가공해야함
+model <-od
+model <- model[order(-model$result,model$cancer_code),] 
+gc <- factor(model$cancer_code) 
+cancer_code<-model$cancer_code
+num_cancercode <- length(levels(model$cancer_code)) 
+CancerCode_color <- rainbow(num_cancercode)[as.integer(gc)]
+fresult <-function(result){
+if(result == 1) {"#CC0000"} 
+#red 
+else{"#00FF00"} 
+#green
+}
+result_color<-unlist(lapply(model$result,fresult)) 
+myCols <- cbind(result_color,CancerCode_color) 
+colnames(myCols)[1] <- "Result" 
+colnames(myCols)[2] <- "CancerCode" 
+model<-subset(model,select = - c(patient,cancer_code,result,index)) 
+input<-data.matrix(model)
+png("heatmap_extra_colbar.png")
+#Scale, colv 값을 조절하면서 보면 차이를 확일 할 수 있다.
+heatmap3(t(input),col = mc, #scale = 'none',
+breaks = col_breaks, Colv = NA, margins = c(3,16), ColSideColors = myCols)
+dev.off()
+```
+![figure7](./figure/figure7.png)
+
+
+
+## Legend 추가하기
+```
+png("heatmap_extra_colbar_with_legend.png")
+#Scale, colv 값을 조절하면서 보면 차이를 확일 할 수 잇다.
+heatmap3(t(input),col = mc, #scale = 'none', breaks = col_breaks, Colv = NA,
+margins = c(3,16), ColSideColors = myCols)
+legend(title = "Result","topright",legend = c("Cancer","Normal"),fill = c("red","green") ,border = FALSE,bty = "n", y.intersp =1.0,cex = 1.0)
+dev.off()
+```
+
+![figure8](./figure/figure8.png)
