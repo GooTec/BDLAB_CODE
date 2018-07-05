@@ -44,14 +44,41 @@ dev.off() 이것을 해야 plot이 close되고 파일을 최종 저장한다. pl
 하지만 가끔 오류가 뜨게 되면, 
 이 방법을 통해 확인 가능
 일단 주석처리 하고 질문이 있으면.. 저에게..
-![figure0](./figure/figure0.png)
+![figure1](./figure/figure1.png)
+
 
 ```
 #png("basic_heatmap3.png")
 #main은 plot 이름을, cexRow = ROW 글자 크기, cexCol = COL 글자 크기. 변경해보면서 확인!
 heatmap3(input,main = "test",cexRow = 0.5, cexCol = 0.5) dev.off()
 ```
+## Heatmap ColV, RowV
 
-![figure1](./figure/figure1.png)
+![figure2](./figure/figure2.png)
+
+지금 그림을 보면 가로 = 사람, 세로 = gene이름이 있다.
+그리고 자동으로 clustering (위에 나뭇가지 처럼 되어 있는 그림)이 된다. # 이것을 조절 하는 것이 Colv, Rowv parameter 이다.
+그리고 우리 기존 data.frame이 row = patient, col = variables이다.
+t(input)을 통해 row, col의 위치를 바꾸어 준다.
+그리고 ColV = NA로 설정하면 col의 나뭇가지가 없어진다.
+
+
+```
+#colv = T와 비교해보면 확실하게 느낌이 올것이다.
+#png("heatmap_colv_F.png") 
+heatmap3(t(input),Colv = F) 
+dev.off()
+```
+![figure3](./figure/figure3.png)
+
+
+
+```
+#png("heatmap_colv_NA.png")
+#colv = NA는 나뭇가지 지우기
+heatmap3(t(input),Colv = NA) dev.off()
+```
+![figure4](./figure/figure4.png)
+
 
 
