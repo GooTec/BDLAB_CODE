@@ -32,8 +32,7 @@ https://datascienceschool.net/view-notebook/83d5e4fff7d64cb2aecfd7e42e1ece5e/
 	- 나중에 이들을 묶어서 하나의 accuracy table을 만든다.
 5) subsampling
 	- ref를 읽어 들인다. read.csv를 통해 앞서 설명한 선별된 geneset을 읽으면 column이 하나인 table 형태로 데이터가 저장된다. 이를 vector 변수로 참조하고 character 변수로 바꿔준다.
-	- subset 함수로 ref를 참조해 발현량 테이블을 subsampling한다. 
-* dim(genes), dim(gene_sub)를 해보면 column 개수가 절반으로 줄어든 것을 확인해볼 수 있다.
+	- subset 함수로 ref를 참조해 발현량 테이블을 subsampling한다.  * dim(genes), dim(gene_sub)를 해보면 column 개수가 절반으로 줄어든 것을 확인해볼 수 있다.
 	- cbind로 regression에 필요한 데이터 형태인 result – genes(subsampled)를 맞춰준다.
 	- sample 함수로 전체 데이터의 20%를 test에, 나머지를 train에 사용한다.
 	- mdlX, Y는 각각 train에 필요한 학습 데이터(발현량), result(암인지 정상인지. 0, 1)
