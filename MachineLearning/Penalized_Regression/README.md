@@ -20,8 +20,8 @@ https://datascienceschool.net/view-notebook/83d5e4fff7d64cb2aecfd7e42e1ece5e/
 
 ## Penalized_Regression_simple.R
 1) directory & file name setting
-- input dir과 ref dir 설정. input dir은 분석에 쓸 sample.csv가 있는 디렉토리, ref dir은 gene set 레퍼런스 파일이 있는 곳. 압축파일을 앞서 언급한 디렉토리에 풀었다면 건드릴 필요가 없다.
-- output dir 설정. 역시 건드릴 필요 없다. 나중에 accuracy들을 기록한 파일을 어디로 내보낼지 결정한다.
+	- input dir과 ref dir 설정. input dir은 분석에 쓸 sample.csv가 있는 디렉토리, ref dir은 gene set 레퍼런스 파일이 있는 곳. 압축파일을 앞서 언급한 디렉토리에 풀었다면 건드릴 필요가 없다.
+	- output dir 설정. 역시 건드릴 필요 없다. 나중에 accuracy들을 기록한 파일을 어디로 내보낼지 결정한다.
 2) data file read
 	- 연습에 쓸 데이터파일을 읽는다. sample.csv를 읽고 patient, cancer_code 등을 따로 떼어 저장한다.
 	- genes의 경우 patient, result 등을 제외한 발현량 관련 table이다. 
@@ -58,31 +58,31 @@ https://datascienceschool.net/view-notebook/83d5e4fff7d64cb2aecfd7e42e1ece5e/
 1) Variance ~ Mean Selection
 간단하게 말하면 어떤 기준에서 gene set을 설정할 것인지의 기준. 앞서 설명했던 ‘ref.csv’파일처럼 학습에 사용할 gene set을 설정하는 것은 매우 중요한 일임. variance가 높은 순서대로, 혹은 발현량 자체가 높은 순서대로 등 나름의 기준을 가지고 gene을 배열한 후 이를 앞에서부터 특정 개수(본 코드에서는 10개/30개/70개)만 뽑아서 모델에 이용하게 됨.
 맨 위에 Get~과 Top~ 코드들은 본 코드에서 직접 쓰이지는 않지만 ref.csv와 같이 geneset을 뽑을 때 사용한 코드 모음. 상세한 설명은 아래와 같으며 바쁘면 스킵해도 무방.
-(1) VAR (Variance) - 전체 환자 데이터에서 특정 gene의 variance를 구한 후 variance가 높은 순서대로 gene을 선별. 기본적으로 환자에 따라 발현량에 차이가 적은 gene보다 차이가 있는 gene이 데이터셋 구분에 중요하리라는 가설에 기반.
+	(1) VAR (Variance) - 전체 환자 데이터에서 특정 gene의 variance를 구한 후 variance가 높은 순서대로 gene을 선별. 기본적으로 환자에 따라 발현량에 차이가 적은 gene보다 차이가 있는 gene이 데이터셋 구분에 중요하리라는 가설에 기반.
 ex) 'VAR 400'이면 variance가 높은 gene 400개를 선별했다는 의미.
-(2) CV (Coefficient of Variance) - 전체 환자 데이터에서 특정 gene의 coefficient of variation을 구한 후 CV가 높은 순서대로 gene을 선별. variance와 비슷한 가설이지만 각 환자마다 생기는 편차를 고려하기 위해 CV를 사용. 
+	(2) CV (Coefficient of Variance) - 전체 환자 데이터에서 특정 gene의 coefficient of variation을 구한 후 CV가 높은 순서대로 gene을 선별. variance와 비슷한 가설이지만 각 환자마다 생기는 편차를 고려하기 위해 CV를 사용. 
 ex) 'CV 100'이면 CV가 높은 gene 100개를 선별했다는 의미.
-(3) Diff (Difference) - 라벨을 사용해 geneset을 선별. normal/cancer 환자군에서 각각 gene별로 발현량을 더하고, 이 둘을 빼고 절대값을 취해 각 환자군에서 발현량 차이가 가장 큰 geneset을 선별. 코드 읽어보면 좀 더 이해가 쉬울 것. 
+	(3) Diff (Difference) - 라벨을 사용해 geneset을 선별. normal/cancer 환자군에서 각각 gene별로 발현량을 더하고, 이 둘을 빼고 절대값을 취해 각 환자군에서 발현량 차이가 가장 큰 geneset을 선별. 코드 읽어보면 좀 더 이해가 쉬울 것. 
 ex) 'Diff 100'이면 sensitive와 resistant 환자군에서 발현량 차이가 가장 큰 gene 100개를 선별했다는 의미.
 	* 이 밖에 원래 cancer에 있어 중요하다고 보고된 annotation geneset도 사용하는데 여기서는 설명 안 함. foundation308 & foundation2267이 그것들임.
 2) ref_names
 	- 앞서 설명한 simple 버전 코드와 달리 써야 할 reference 파일이 여러 개다.
-- ref를 여러 개를 사용할 것이기 때문에(type별로, gene 개수별로) 공통적으로 앞에 붙어있는 이름인 "names_GEO_input_ensemble"만 일단 넣어놓고 나중에 개별적인 이름을 보여줄 것임.
+	- ref를 여러 개를 사용할 것이기 때문에(type별로, gene 개수별로) 공통적으로 앞에 붙어있는 이름인 "names_GEO_input_ensemble"만 일단 넣어놓고 나중에 개별적인 이름을 보여줄 것임.
 3) types & features
-- types는 각 gene을 뽑은 기준
+	- types는 각 gene을 뽑은 기준
 ex) VAR면 전체 geneset을 variance가 높은 순으로 배열했다는 뜻
-- features는 그래서 뽑은 gene의 개수
+	- features는 그래서 뽑은 gene의 개수
 ex) type이 VAR, feature가 10이면 Variance 상위 10개 gene을 뽑았다는 뜻.
 	- ref file을 만들 때 variance에 대해 10개, 30개, 70개 이런 식으로 뽑았기 때문에 types, features에 대해 2중 for문을 돌려 총 9개의 reference를 모두 사용할 것임.
 4) recorder
 	- 아까와 다른 부분은 t와 f인데, type과 feature를 뭘 썼는지 저장하는 부분임.
 	- num은 for문 가장 안쪽을 돌 때마다 3씩 증가하는데, for문 한 번당 Ridge, Lasso, Elastic Net 세 개의 결과를 저장하기 때문에 그 위치를 지정해주는 것. 어디 쓰이는지 궁금하다면 Ctrl+F해서 ‘num’을 검색해볼 것.
 5) type & feature
-- for문이 본격적으로 시작. type과 feature는 각각 types와 features 벡터 변수에서ref_names한 개씩에 해당함. 궁금하면 for문 돌리면서 type과 feature를 출력하는 부분을 살펴볼 것.
-- ref file은 실제 file 이름. 압축파일 내의 names 디렉토리(설명대로 풀었다면 C:\\test\\names)에서 reference 파일 이름을 보면 “names_GEO_input_ensemble_CV_10.csv” 이런 식으로 앞의 공통 부분(앞서 ref_names로 정의)과 type(여기서는 CV), feature 개수(여기서는 10), 마지막 공통 부분 “.csv”로 나뉜다. 이를 고대로 넣어줌. 
+	- for문이 본격적으로 시작. type과 feature는 각각 types와 features 벡터 변수에서ref_names한 개씩에 해당함. 궁금하면 for문 돌리면서 type과 feature를 출력하는 부분을 살펴볼 것.
+	- ref file은 실제 file 이름. 압축파일 내의 names 디렉토리(설명대로 풀었다면 C:\\test\\names)에서 reference 파일 이름을 보면 “names_GEO_input_ensemble_CV_10.csv” 이런 식으로 앞의 공통 부분(앞서 ref_names로 정의)과 type(여기서는 CV), feature 개수(여기서는 10), 마지막 공통 부분 “.csv”로 나뉜다. 이를 고대로 넣어줌. 
 * 궁금하면 for문 돌리면서 출력하는 “ref is ~” 문장을 참조.
-- ref는 위에서 정의한 ref_file에 “.csv”를 더해서 실제 파일의 이름을 지칭하고 이를 read.csv로 읽고… 기타 등등 한 파일. 실제 gene 이름이 들어간 vector 변수임.
-- gene_sub는 genes를 ref 파일에 있는 gene으로 선택해 자른 것.
+	- ref는 위에서 정의한 ref_file에 “.csv”를 더해서 실제 파일의 이름을 지칭하고 이를 read.csv로 읽고… 기타 등등 한 파일. 실제 gene 이름이 들어간 vector 변수임.
+	- gene_sub는 genes를 ref 파일에 있는 gene으로 선택해 자른 것.
 6) cross validation
 	- 앞서 원본 데이터를 train & test로 분리할 때 sample함수로 랜덤하게 뽑았는데, 여기서는 모델의 안정성을 평가하기 위해 index를 사용함. 전체 데이터셋을 다섯 덩이로 나누고 한 덩어리는 테스트에, 나머지 네 덩어리는 학습에 사용하는 방식. 어떤 것을 test에 쓸 것인지에 따라 다섯 번 학습&테스트를 거치게 됨.
 	- 실제 regression은 거의 비슷. ref file 이름을 통째로 기록하는 것이 아니라 type, feature로 나눠서 기록하기 때문에 분류가 좀 더 간편(ex: CV만 찾기, 30개짜리들 비교하기…)
