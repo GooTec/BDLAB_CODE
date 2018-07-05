@@ -44,3 +44,14 @@ dev.off() 이것을 해야 plot이 close되고 파일을 최종 저장한다. pl
 하지만 가끔 오류가 뜨게 되면, 
 이 방법을 통해 확인 가능
 일단 주석처리 하고 질문이 있으면.. 저에게..
+![figure0](./figure/figure0.png)
+
+```
+#png("basic_heatmap3.png")
+#main은 plot 이름을, cexRow = ROW 글자 크기, cexCol = COL 글자 크기. 변경해보면서 확인!
+heatmap3(input,main = "test",cexRow = 0.5, cexCol = 0.5) dev.off()
+```
+
+![figure1](./figure/figure1.png)
+
+
