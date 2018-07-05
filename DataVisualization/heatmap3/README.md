@@ -150,3 +150,16 @@ breaks = col_breaks, Colv = NA, margins = c(3,16), ColSideColors = myCols)
 dev.off()
 ```
 ![figure8](./figure/figure8.png)
+
+
+## Legend 추가하기
+```
+png("heatmap_extra_colbar_with_legend.png")
+#Scale, colv 값을 조절하면서 보면 차이를 확일 할 수 잇다.
+heatmap3(t(input),col = mc, #scale = 'none', breaks = col_breaks, Colv = NA,
+margins = c(3,16), ColSideColors = myCols)
+legend(title = "Result","topright",legend = c("Cancer","Normal"),fill = c("red","green") ,border = FALSE,bty = "n", y.intersp =1.0,cex = 1.0)
+dev.off()
+```ㅎ
+
+![figure8](./figure/figure9.png)
