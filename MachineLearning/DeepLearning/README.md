@@ -1,2 +1,14 @@
-# BDLAB_ML_Library
-this repository is including library code based on tensorflow for BioDataLab in HGU 
+# Deep Learning 
+- 작성자 : 구태완
+- e-mail : starymate@gmail.com
+
+## Library 
+
+## Data Processing
+
+## Model Setting
+
+## Train
+
+## Test
+
