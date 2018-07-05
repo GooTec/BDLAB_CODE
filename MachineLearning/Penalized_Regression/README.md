@@ -50,6 +50,8 @@ https://datascienceschool.net/view-notebook/83d5e4fff7d64cb2aecfd7e42e1ece5e/
 	- 앞서 기록한 reference, method, accuracy 데이터를 data frame으로 만든다. 대상 디렉토리에 저장한다.
 
 결과 파일
+
+
 ![result_file](./result_file.png)
 
 ## Penalized_Regression_Example.R
@@ -88,6 +90,8 @@ ex) type이 VAR, feature가 10이면 Variance 상위 10개 gene을 뽑았다는 
 	- 실제 regression은 거의 비슷. ref file 이름을 통째로 기록하는 것이 아니라 type, feature로 나눠서 기록하기 때문에 분류가 좀 더 간편(ex: CV만 찾기, 30개짜리들 비교하기…)
 
 결과 예시
+
+
 ![result_example](./result_example.png)
 
 
