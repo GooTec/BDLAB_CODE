@@ -49,11 +49,14 @@ epoch: The number of iterations in between update messages.
 ```
 
 ## ※Update message 예시 
+![figure1](./figure/figure1.png)
 
 
 ## ※Plotting 예시 
+![figure1](./figure/figure2.png)
 
 ## ※Color code
+![figure1](./figure/figure3.png)
 
 #FF0000FF #FFFF00FF #00FF00FF #00FFFFFF #0000FFFF #FF00FFFF
 "red"      "yellow"   "green"    "cyan"     "blue"    "magenta"
