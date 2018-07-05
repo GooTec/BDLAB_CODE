@@ -1,10 +1,6 @@
-# SVM README
+# Support Vector Machine
     작성자 : 김성민
-    
-    작성일 : 2018.6.22
-    
-    문의 : 
-
+    e-mail : 
 ## Library
   e1071
 ```
