@@ -59,8 +59,10 @@ samtools sort ./run_1align.bam -o ./run1_align.bam.sorted
 samtools index ./run1_align.bam.sorted
 samtools tview ./run1_align.bam.sorted ref_new.fasta
 ```
+![figure1](./figure/figure1.png)
 
 ### Pile up
+![figure1](./figure/figure2.png)
 ```sh
 samtools mpileup -f ./Desktop/samtools_output/ref_new.fasta
 -s ./Desktop/output3/sorted/run1_align.bam.sorted
