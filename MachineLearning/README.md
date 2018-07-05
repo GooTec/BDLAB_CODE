@@ -4,6 +4,6 @@
 
 ## 방법
 - [SVM (Support Vector Machine)](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/SVM) 
-- [Penalalized Regression](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/PenalizedRegression)
+- [Penalalized Regression](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/Penalized_Regression)
 - [Deep Learning](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/DeepLearning)
 
