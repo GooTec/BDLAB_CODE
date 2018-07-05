@@ -3,5 +3,5 @@
 
 내용 목록
 - [Machine Learning](https://github.com/GooTec/BDLAB_CODE/edit/master/README.md)
-- Data Visualization
-- Sequence Aligning
+- [Data Visualization](https://github.com/GooTec/BDLAB_CODE/edit/master/README.md)
+- [Sequence Aligning](https://github.com/GooTec/BDLAB_CODE/edit/master/README.md)
