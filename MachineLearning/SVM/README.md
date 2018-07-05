@@ -1,6 +1,6 @@
 # Support Vector Machine
-    작성자 : 김성민
-    e-mail : 
+- 작성자 : 김성민 
+- e-mail : 
 ## Library
   e1071
 ```
