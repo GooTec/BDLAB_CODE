@@ -48,6 +48,18 @@ epoch: The number of iterations in between update messages.
 #몇 epoch마다 update message를 출력할지를 정한다. 
 ```
 
+## ※Update message 예시 
+
+
+## ※Plotting 예시 
+
+## ※Color code
+
+#FF0000FF #FFFF00FF #00FF00FF #00FFFFFF #0000FFFF #FF00FFFF
+"red"      "yellow"   "green"    "cyan"     "blue"    "magenta"
+
+tsne 매뉴얼 링크 참조: https://cran.r-project.org/web/packages/tsne/tsne.pdf 
+
 
 
 
