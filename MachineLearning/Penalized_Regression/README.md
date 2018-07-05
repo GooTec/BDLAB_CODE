@@ -5,11 +5,11 @@
 ## 파일 확인
 C:\test 폴더를 만들고 그 안에 압축 파일을 모두 풀 것.
 1) 공통
-  - sample.csv(원본파일)
+	- sample.csv(원본파일)
 2) Penalized_Regression_simple.R(간단)
-  - ref.csv(geneset 파일) 파일만 필요.
+  	- ref.csv(geneset 파일) 파일만 필요.
 3) Penalized_Regression_Example.R(실제 사용)
-  - ‘names’ 폴더 안의 파일들 필요.
+  	- ‘names’ 폴더 안의 파일들 필요.
 
 ## 기본 개념
 1) Penalized Regression은 regression 기법의 한 종류로 Y = WX + B에서 weight에 제약 조건을 추가하는 방식으로 작동함. 상세한 내용은 아래 사이트 참조.
