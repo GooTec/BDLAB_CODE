@@ -11,7 +11,7 @@
 ### [Deep Learning](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/DeepLearning)
    심층학습(深層學習)은 여러 비선형 변환기법의 조합을 통해 높은 수준의 추상화(abstractions, 다량의 데이터나 복잡한 자료들 속에서 핵심적인 내용 또는 기능을 요약하는 작업)를 시도하는 기계학습(machine learning) 알고리즘의 집합[1] 으로 정의되며, 큰 틀에서 사람의 사고방식을 컴퓨터에게 가르치는 기계학습의 한 분야라고 이야기할 수 있다.
 
-### [T-sne Analysis](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/tsne_analysis)
+### [T-sne Analysis](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/Tsne_Analysis)
 
 ## [Data Visualization](https://github.com/GooTec/BDLAB_CODE/tree/master/DataVisualization)
 ### [Heatmap](https://github.com/GooTec/BDLAB_CODE/tree/master/DataVisualization/heatmap3) 
