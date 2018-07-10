@@ -6,7 +6,7 @@
 ### [SVM (Support Vector Machine)](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/SVM) 
    SVM은 기계 학습의 분야 중 하나로 패턴 인식, 자료 분석을 위한 지도 학습 모델이며, 주로 분류와 회귀 분석을 위해 사용한다. 두 카테고리 중 어느 하나에 속한 데이터의 집합이 주어졌을 때, SVM 알고리즘은 주어진 데이터 집합을 바탕으로 하여 새로운 데이터가 어느 카테고리에 속할지 판단하는 비확률적 이진 선형 분류 모델을 만든다.
    
-### [Penalalized Regression](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/PenalizedRegression)
+### [Penalalized Regression](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/Penalized_Regression)
    결희가 설명할 것임 
 ### [Deep Learning](https://github.com/GooTec/BDLAB_CODE/tree/master/MachineLearning/DeepLearning)
    심층학습(深層學習)은 여러 비선형 변환기법의 조합을 통해 높은 수준의 추상화(abstractions, 다량의 데이터나 복잡한 자료들 속에서 핵심적인 내용 또는 기능을 요약하는 작업)를 시도하는 기계학습(machine learning) 알고리즘의 집합[1] 으로 정의되며, 큰 틀에서 사람의 사고방식을 컴퓨터에게 가르치는 기계학습의 한 분야라고 이야기할 수 있다.
