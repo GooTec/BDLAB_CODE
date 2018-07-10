@@ -126,8 +126,3 @@ with tf.Session() as sess:
     model_num += 1                    
     
 ```
-
-
-
-## Test
-
