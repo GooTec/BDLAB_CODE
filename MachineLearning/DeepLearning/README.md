@@ -28,12 +28,15 @@ pip install tensorflow
 ## 예제를 통한 Library 활용하기
 ### 모듈 읽어오기
 ```py
-import lib.dataProcess as dp
-import lib.deepLearning as dl
-import pandas as pd
-import tensorflow as tf
+import lib.dataProcess as dp    #data processing을 위한 라이브러리
+import lib.deepLearning as dl   #deep learning model 셋팅을 위한 라이브러리
+import pandas as pd             #pandas 는 dataframe 모듈
+import tensorflow as tf         #tensorflow 는 파이썬 기반의 딥러닝 모듈
 ```
 
+```py
+inputfile = input("Insert input file Name :") #입력 파일을 입력
+```
 
 ## Test
 
