@@ -81,7 +81,7 @@ registerDoParallel(cores = 4)
   roc2 <- roc(newY, as.numeric(predict(md2, newX, type = "response")))
   acc2 <- ci.coords(roc2, x="best", input = "threshold", ret=c("accuracy"), best.policy = "omit")
   accuracy <- c(accuracy,acc2[2])
-  r <- c(ref_names, ref)
+  r <- c(r, ref_names)
   method <- c(method, "RIDGE")
   print(paste0("ref: ", ref_names, ", RIDGE accuracy is ", acc2[2]))
   
